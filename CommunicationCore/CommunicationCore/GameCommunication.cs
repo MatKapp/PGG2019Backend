@@ -20,13 +20,27 @@ namespace CommunicationCore
             await base.OnConnected(socket);
             var socketId = WebSocketConnectionManager.GetId(socket);
 
-            var message = new Message()
+            var message = new Message() 
             {
                 MessageType = MessageType.Text,
                 Data = $"{socketId} you are connected Peter"
             };
 
             await SendMessageAsync(socketId, message);
+        }
+
+        // this method can be called from a client, add user.
+        public async Task Move(WebSocket socket, string direction)
+        {
+            var socketId = WebSocketConnectionManager.GetId(socket);
+
+            Message responseMessage = new Message()
+            {
+                MessageType = MessageType.Text,
+                Data = "good"
+            };
+
+            await SendMessageAsync(socketId, responseMessage);
         }
     }
 }
