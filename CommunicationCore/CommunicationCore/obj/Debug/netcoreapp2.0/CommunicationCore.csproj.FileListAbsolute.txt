@@ -1,0 +1,16 @@
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\CommunicationCore\bin\Debug\netcoreapp2.0\CommunicationCore.deps.json
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\CommunicationCore\bin\Debug\netcoreapp2.0\CommunicationCore.runtimeconfig.json
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\CommunicationCore\bin\Debug\netcoreapp2.0\CommunicationCore.runtimeconfig.dev.json
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\CommunicationCore\bin\Debug\netcoreapp2.0\CommunicationCore.dll
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\CommunicationCore\obj\Debug\netcoreapp2.0\CommunicationCore.csprojAssemblyReference.cache
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\CommunicationCore\obj\Debug\netcoreapp2.0\CommunicationCore.csproj.CoreCompileInputs.cache
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\CommunicationCore\obj\Debug\netcoreapp2.0\CommunicationCore.AssemblyInfoInputs.cache
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\CommunicationCore\obj\Debug\netcoreapp2.0\CommunicationCore.AssemblyInfo.cs
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\CommunicationCore\bin\Debug\netcoreapp2.0\WebSocketManager.Common.dll
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\CommunicationCore\bin\Debug\netcoreapp2.0\WebSocketManager.dll
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\CommunicationCore\bin\Debug\netcoreapp2.0\CommunicationCore.pdb
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\CommunicationCore\bin\Debug\netcoreapp2.0\WebSocketManager.pdb
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\CommunicationCore\bin\Debug\netcoreapp2.0\WebSocketManager.Common.pdb
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\CommunicationCore\obj\Debug\netcoreapp2.0\CommunicationCore.csproj.CopyComplete
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\CommunicationCore\obj\Debug\netcoreapp2.0\CommunicationCore.dll
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\CommunicationCore\obj\Debug\netcoreapp2.0\CommunicationCore.pdb
