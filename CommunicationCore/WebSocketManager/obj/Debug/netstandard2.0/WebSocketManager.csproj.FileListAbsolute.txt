@@ -1,0 +1,12 @@
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\WebSocketManager\bin\Debug\netstandard2.0\WebSocketManager.deps.json
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\WebSocketManager\bin\Debug\netstandard2.0\WebSocketManager.dll
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\WebSocketManager\bin\Debug\netstandard2.0\WebSocketManager.pdb
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\WebSocketManager\bin\Debug\netstandard2.0\WebSocketManager.Common.dll
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\WebSocketManager\bin\Debug\netstandard2.0\WebSocketManager.Common.pdb
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\WebSocketManager\obj\Debug\netstandard2.0\WebSocketManager.csprojAssemblyReference.cache
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\WebSocketManager\obj\Debug\netstandard2.0\WebSocketManager.csproj.CoreCompileInputs.cache
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\WebSocketManager\obj\Debug\netstandard2.0\WebSocketManager.AssemblyInfoInputs.cache
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\WebSocketManager\obj\Debug\netstandard2.0\WebSocketManager.AssemblyInfo.cs
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\WebSocketManager\obj\Debug\netstandard2.0\WebSocketManager.csproj.CopyComplete
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\WebSocketManager\obj\Debug\netstandard2.0\WebSocketManager.dll
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\CommunicationCore\WebSocketManager\obj\Debug\netstandard2.0\WebSocketManager.pdb
