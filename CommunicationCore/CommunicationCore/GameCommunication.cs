@@ -22,7 +22,6 @@ namespace CommunicationCore
 
             var message = new Message() 
             {
-                MessageType = MessageType.Text,
                 Data = $"{socketId} you are connected Peter"
             };
 
@@ -36,7 +35,6 @@ namespace CommunicationCore
 
             Message responseMessage = new Message()
             {
-                MessageType = MessageType.Text,
                 Data = "good"
             };
 

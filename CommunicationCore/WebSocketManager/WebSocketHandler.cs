@@ -56,7 +56,6 @@ namespace WebSocketManager
 
             await SendMessageAsync(socket, new Message()
             {
-                MessageType = MessageType.ConnectionEvent,
                 Data = WebSocketConnectionManager.GetId(socket)
             }).ConfigureAwait(false);
         }
@@ -114,7 +113,6 @@ namespace WebSocketManager
         {
             var message = new Message()
             {
-                MessageType = MessageType.MethodInvocation,
                 Data = JsonConvert.SerializeObject(new InvocationDescriptor()
                 {
                     MethodName = methodName,
@@ -140,7 +138,7 @@ namespace WebSocketManager
             _waitingRemoteInvocations.Add(invocationDescriptor.Identifier, task);
 
             // send the method invocation to the client.
-            var message = new Message() { MessageType = MessageType.MethodInvocation, Data = JsonConvert.SerializeObject(invocationDescriptor, _jsonSerializerSettings) };
+            var message = new Message() { Data = JsonConvert.SerializeObject(invocationDescriptor, _jsonSerializerSettings) };
             await SendMessageAsync(socketId, message).ConfigureAwait(false);
 
             // wait for the return value elsewhere in the program.
@@ -238,78 +236,59 @@ namespace WebSocketManager
 
         public async Task ReceiveAsync(WebSocket socket, WebSocketReceiveResult result, Message receivedMessage)
         {
-            // method invocation request.
-            if (receivedMessage.MessageType == MessageType.MethodInvocation)
+            // retrieve the method invocation request.
+            InvocationDescriptor invocationDescriptor = null;
+            try
             {
-                // retrieve the method invocation request.
-                InvocationDescriptor invocationDescriptor = null;
+                invocationDescriptor = JsonConvert.DeserializeObject<InvocationDescriptor>(receivedMessage.Data, _jsonSerializerSettings);
+                if (invocationDescriptor == null) return;
+            }
+            catch { return; } // ignore invalid data sent to the server.
+
+            // if the unique identifier hasn't been set then the client doesn't want a return value.
+            if (invocationDescriptor.Identifier == Guid.Empty)
+            {
+                // invoke the method only.
                 try
                 {
-                    invocationDescriptor = JsonConvert.DeserializeObject<InvocationDescriptor>(receivedMessage.Data, _jsonSerializerSettings);
-                    if (invocationDescriptor == null) return;
+                    await MethodInvocationStrategy.OnInvokeMethodReceivedAsync(socket, invocationDescriptor);
                 }
-                catch { return; } // ignore invalid data sent to the server.
-
-                // if the unique identifier hasn't been set then the client doesn't want a return value.
-                if (invocationDescriptor.Identifier == Guid.Empty)
+                catch (Exception)
                 {
-                    // invoke the method only.
-                    try
-                    {
-                        await MethodInvocationStrategy.OnInvokeMethodReceivedAsync(socket, invocationDescriptor);
-                    }
-                    catch (Exception)
-                    {
-                        // we consume all exceptions.
-                    }
-                }
-                else
-                {
-                    // invoke the method and get the result.
-                    InvocationResult invokeResult;
-                    try
-                    {
-                        // create an invocation result with the results.
-                        invokeResult = new InvocationResult()
-                        {
-                            Identifier = invocationDescriptor.Identifier,
-                            Result = await MethodInvocationStrategy.OnInvokeMethodReceivedAsync(socket, invocationDescriptor),
-                            Exception = null
-                        };
-                    }
-                    // send the exception as the invocation result if there was one.
-                    catch (Exception ex)
-                    {
-                        invokeResult = new InvocationResult()
-                        {
-                            Identifier = invocationDescriptor.Identifier,
-                            Result = null,
-                            Exception = new RemoteException(ex)
-                        };
-                    }
-
-                    // send a message to the client containing the result.
-                    var message = new Message()
-                    {
-                        MessageType = MessageType.MethodReturnValue,
-                        Data = JsonConvert.SerializeObject(invokeResult, _jsonSerializerSettings)
-                    };
-                    await SendMessageAsync(socket, message).ConfigureAwait(false);
+                    // we consume all exceptions.
                 }
             }
-
-            // method return value.
-            else if (receivedMessage.MessageType == MessageType.MethodReturnValue)
+            else
             {
-                var invocationResult = JsonConvert.DeserializeObject<InvocationResult>(receivedMessage.Data, _jsonSerializerSettings);
-                // find the completion source in the waiting list.
-                if (_waitingRemoteInvocations.ContainsKey(invocationResult.Identifier))
+                // invoke the method and get the result.
+                InvocationResult invokeResult;
+                try
                 {
-                    // set the result of the completion source so the invoke method continues executing.
-                    _waitingRemoteInvocations[invocationResult.Identifier].SetResult(invocationResult);
-                    // remove the completion source from the waiting list.
-                    _waitingRemoteInvocations.Remove(invocationResult.Identifier);
+                    // create an invocation result with the results.
+                    invokeResult = new InvocationResult()
+                    {
+                        Identifier = invocationDescriptor.Identifier,
+                        Result = await MethodInvocationStrategy.OnInvokeMethodReceivedAsync(socket, invocationDescriptor),
+                        Exception = null
+                    };
                 }
+                // send the exception as the invocation result if there was one.
+                catch (Exception ex)
+                {
+                    invokeResult = new InvocationResult()
+                    {
+                        Identifier = invocationDescriptor.Identifier,
+                        Result = null,
+                        Exception = new RemoteException(ex)
+                    };
+                }
+
+                // send a message to the client containing the result.
+                var message = new Message()
+                {
+                    Data = JsonConvert.SerializeObject(invokeResult, _jsonSerializerSettings)
+                };
+                await SendMessageAsync(socket, message).ConfigureAwait(false);
             }
         }
 
