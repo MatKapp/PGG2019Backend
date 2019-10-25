@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebSocketManager;
 using WebSocketManager.Common;
+using WindowsInput;
 
 namespace CommunicationCore
 {
@@ -32,6 +33,23 @@ namespace CommunicationCore
         public async Task Move(WebSocket socket, string direction)
         {
             var socketId = WebSocketConnectionManager.GetId(socket);
+            var simulator = new InputSimulator();
+
+            if (direction == "left")
+            {
+                simulator.Keyboard.KeyUp(WindowsInput.Native.VirtualKeyCode.RIGHT);
+                simulator.Keyboard.KeyDown(WindowsInput.Native.VirtualKeyCode.LEFT);
+            }
+            else if (direction == "right")
+            {
+                simulator.Keyboard.KeyUp(WindowsInput.Native.VirtualKeyCode.LEFT);
+                simulator.Keyboard.KeyDown(WindowsInput.Native.VirtualKeyCode.RIGHT);
+            }
+            else
+            {
+                simulator.Keyboard.KeyUp(WindowsInput.Native.VirtualKeyCode.LEFT);
+                simulator.Keyboard.KeyUp(WindowsInput.Native.VirtualKeyCode.RIGHT);
+            }
 
             Message responseMessage = new Message()
             {
