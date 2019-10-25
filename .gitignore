@@ -1,0 +1,3 @@
+ ControllerBackend/bin/*
+ ControllerBackend/obj/*
+ .vs/*
