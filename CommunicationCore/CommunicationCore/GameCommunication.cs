@@ -12,7 +12,7 @@ namespace CommunicationCore
 {
     public class GameCommunication : WebSocketHandler
     {
-        const int PlayersNumber = 6;
+        const int PlayersNumber = 4;
         public GameEngine.GameEngine GameEngine { get; set; }
 
         public GameCommunication(WebSocketConnectionManager webSocketConnectionManager) : base(webSocketConnectionManager, new ControllerMethodInvocationStrategy())
@@ -48,7 +48,7 @@ namespace CommunicationCore
         {
             var socketId = WebSocketConnectionManager.GetId(socket);
             GameEngine.AddPlayer(socketId, teamName);
-
+            SendTeamIdToPlayers();
             if (GameEngine.GameStarted)
             {
                 Message responseMessage = new Message()
@@ -59,10 +59,10 @@ namespace CommunicationCore
 
                 await SendMessageToAllAsync(responseMessage);
             }
-            else
-            {
-                SendTeamIdToPlayers();
-            }
+            //else
+            //{
+            //    SendTeamIdToPlayers();
+            //}
         }
 
         private async void SendTeamIdToPlayers()

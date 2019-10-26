@@ -1,10 +1,10 @@
 ﻿namespace WebSocketManager.Common
 {
     public enum MessageType
-    {
-        GameStarted,
+    {        
         Connected,
-        Joined
+        Joined,
+        GameStarted
     }
 
     public class Message

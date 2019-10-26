@@ -37,6 +37,7 @@ namespace GameEngine
 
                         if (i == TeamsNumber -1)
                             GameStarted = true;
+                        break;
                     }
                 }
             }
