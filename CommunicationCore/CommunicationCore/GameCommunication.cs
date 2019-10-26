@@ -63,7 +63,7 @@ namespace CommunicationCore
             {
                 Message responseMessage = new Message()
                 {
-                    MessageType = MessageType.GameStarted,
+                    MessageType = MessageType.Joined,
                     Data = messageData
                 };
 

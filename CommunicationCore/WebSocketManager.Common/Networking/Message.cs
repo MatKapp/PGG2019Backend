@@ -3,7 +3,8 @@
     public enum MessageType
     {
         GameStarted,
-        Connected
+        Connected,
+        Joined
     }
 
     public class Message
