@@ -60,8 +60,15 @@ namespace CommunicationCore
                 message = new Message()
                 {
                     MessageType = MessageType.Name,
-                    Data = $"{name} {PlayersCounter}",
+                    Data = $"{name}",
                 };
+                Message numberMessage = new Message()
+                {
+                    MessageType = MessageType.NumberOfPlayers,
+                    Data = $"{PlayersCounter} {PlayersNumber}",
+                };
+
+                await SendMessageToAllAsync(numberMessage);
                 if (GameEngine.GameStarted)
                 {
                     Message responseMessage = new Message()
