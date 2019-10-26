@@ -7,6 +7,7 @@ namespace GameEngine
     public class GameEngine
     {
         public readonly int PlayersNumber;
+        public int PlayersCounter;
         public readonly int TeamsNumber;
         public bool GameStarted { get; set; }
         public string[] PlayerSocketIds { get; set; }
@@ -15,36 +16,55 @@ namespace GameEngine
         public GameEngine(int playersNumber)
         {
             PlayersNumber = playersNumber;
+            PlayersCounter = 0;
             TeamsNumber = PlayersNumber / 2;
             PlayerSocketIds = new string[PlayersNumber];
             PlayerTeamRequest = new Dictionary<string, string>();
         }
 
-        public void AddPlayer(string socketId, string teamName)
+        public string AddPlayer(string socketId)
         {
-
-            if (PlayerTeamRequest.ContainsKey(teamName) 
-                    && PlayerTeamRequest[teamName] != socketId)
+            for (int i = 0; i < PlayersNumber; i++)
             {
-                for (int i = 0; i < TeamsNumber; i++)
+                if (String.Equals(PlayerSocketIds[i], socketId))
                 {
-                    if (String.IsNullOrEmpty(PlayerSocketIds[2* i])
-                            && String.IsNullOrEmpty(PlayerSocketIds[2 * i + 1]))
+                    return null;
+                }
+                if (String.IsNullOrEmpty(PlayerSocketIds[i]))
+                {
+                    PlayerSocketIds[i] = socketId;
+                    PlayersCounter++;
+                    if (PlayersCounter == PlayersNumber)
                     {
-                        PlayerSocketIds[2 * i] = socketId;
-                        PlayerSocketIds[2 * i + 1] = PlayerTeamRequest[teamName];
-                        PlayerTeamRequest.Remove(teamName);
-
-                        if (i == TeamsNumber -1)
-                            GameStarted = true;
-                        break;
+                        GameStarted = true;
                     }
+                    return Globalnfo.PlayerNameMap[i];
                 }
             }
-            else
-            {
-                PlayerTeamRequest.Add(teamName, socketId);
-            }
+            return null;
+
+            //if (PlayerTeamRequest.ContainsKey(teamName) 
+            //        && PlayerTeamRequest[teamName] != socketId)
+            //{
+            //    for (int i = 0; i < TeamsNumber; i++)
+            //    {
+            //        if (String.IsNullOrEmpty(PlayerSocketIds[2* i])
+            //                && String.IsNullOrEmpty(PlayerSocketIds[2 * i + 1]))
+            //        {
+            //            PlayerSocketIds[2 * i] = socketId;
+            //            PlayerSocketIds[2 * i + 1] = PlayerTeamRequest[teamName];
+            //            PlayerTeamRequest.Remove(teamName);
+
+            //            if (i == TeamsNumber -1)
+            //                GameStarted = true;
+            //            break;
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    PlayerTeamRequest.Add(teamName, socketId);
+            //}
         }
 
         public int FindPlayerId(string socketId)

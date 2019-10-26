@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
+      "InputSimulatorPlus/1.0.7": {
+        "type": "package",
+        "compile": {
+          "lib/net20/WindowsInput.dll": {}
+        },
+        "runtime": {
+          "lib/net20/WindowsInput.dll": {}
+        }
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -4727,6 +4736,19 @@
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
       },
+      "GameEngine/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "InputSimulatorPlus": "1.0.7"
+        },
+        "compile": {
+          "bin/placeholder/GameEngine.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GameEngine.dll": {}
+        }
+      },
       "WebSocketManager/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -4758,6 +4780,20 @@
     }
   },
   "libraries": {
+    "InputSimulatorPlus/1.0.7": {
+      "sha512": "mOJt32qhvp3knYB8EEOh6/9cwZEwQV2BRD3DGZZ8guFg8vOt+xq6QGEt5eFjTkG+VWgVDMPVdCAIE4gnfab+3Q==",
+      "type": "package",
+      "path": "inputsimulatorplus/1.0.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "inputsimulatorplus.1.0.7.nupkg.sha512",
+        "inputsimulatorplus.nuspec",
+        "lib/net20/WindowsInput.dll",
+        "lib/net20/WindowsInput.pdb",
+        "lib/net20/WindowsInput.xml"
+      ]
+    },
     "Libuv/1.10.0": {
       "sha512": "GsCf4q+eyaI49rCPlgYxdxa1SQCysXFFdSJWdstrwxytg4+VPYLYrXD4AT2rjHVJ+UF7SSWX9CapWEYaU4ejVQ==",
       "type": "package",
@@ -13035,6 +13071,11 @@
         "windowsazure.storage.nuspec"
       ]
     },
+    "GameEngine/1.0.0": {
+      "type": "project",
+      "path": "../../GameEngine/GameEngine.csproj",
+      "msbuildProject": "../../GameEngine/GameEngine.csproj"
+    },
     "WebSocketManager/1.0.0": {
       "type": "project",
       "path": "../WebSocketManager/WebSocketManager.csproj",
@@ -13048,29 +13089,30 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
+      "GameEngine >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.9",
       "Microsoft.NETCore.App >= 2.0.0",
       "WebSocketManager >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mka\\.nuget\\packages\\": {},
+    "C:\\Users\\mpo\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\CommunicationCore\\CommunicationCore.csproj",
+      "projectUniqueName": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\CommunicationCore\\CommunicationCore.csproj",
       "projectName": "CommunicationCore",
-      "projectPath": "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\CommunicationCore\\CommunicationCore.csproj",
-      "packagesPath": "C:\\Users\\mka\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\CommunicationCore\\obj\\",
+      "projectPath": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\CommunicationCore\\CommunicationCore.csproj",
+      "packagesPath": "C:\\Users\\mpo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\CommunicationCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\mka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mpo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13083,8 +13125,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\WebSocketManager\\WebSocketManager.csproj": {
-              "projectPath": "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\WebSocketManager\\WebSocketManager.csproj"
+            "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\WebSocketManager\\WebSocketManager.csproj": {
+              "projectPath": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\WebSocketManager\\WebSocketManager.csproj"
+            },
+            "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\GameEngine\\GameEngine.csproj": {
+              "projectPath": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\GameEngine\\GameEngine.csproj"
             }
           }
         }
@@ -13103,17 +13148,36 @@
             "version": "[2.0.9, )"
           },
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.0.0, )",
             "autoReferenced": true
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Pakiet „InputSimulatorPlus 1.0.7” został przywrócony przy użyciu elementu „.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8” zamiast platformy docelowej projektu „.NETCoreApp,Version=v2.0”. Ten pakiet może nie być w pełni kompatybilny z Twoim projektem.",
+      "libraryId": "InputSimulatorPlus",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.0"
+      ]
+    }
+  ]
 }

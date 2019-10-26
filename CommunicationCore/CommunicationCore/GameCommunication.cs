@@ -13,6 +13,7 @@ namespace CommunicationCore
     public class GameCommunication : WebSocketHandler
     {
         const int PlayersNumber = 4;
+        int PlayersCounter = 0;
         public GameEngine.GameEngine GameEngine { get; set; }
 
         public GameCommunication(WebSocketConnectionManager webSocketConnectionManager) : base(webSocketConnectionManager, new ControllerMethodInvocationStrategy())
@@ -31,24 +32,27 @@ namespace CommunicationCore
 
         public override async Task OnConnected(WebSocket socket)
         {
+            if (PlayersCounter >= PlayersNumber)
+            {
+                return;
+            }
+
+
             await base.OnConnected(socket);
             var socketId = WebSocketConnectionManager.GetId(socket);
+
+            string name = GameEngine.AddPlayer(socketId);
+
+            if (String.IsNullOrEmpty(name))
+            {
+                return;
+            }
 
             var message = new Message()
             {
                 MessageType = MessageType.Connected,
-                Data = $"Hello! Add a player BRO."
+                Data = name
             };
-
-            await SendMessageAsync(socketId, message);
-        }
-
-        // this method can be called from a client, add user.
-        public async Task AddPlayer(WebSocket socket, string teamName)
-        {
-            var socketId = WebSocketConnectionManager.GetId(socket);
-            GameEngine.AddPlayer(socketId, teamName);
-            SendTeamIdToPlayers();
             if (GameEngine.GameStarted)
             {
                 Message responseMessage = new Message()
@@ -59,6 +63,26 @@ namespace CommunicationCore
 
                 await SendMessageToAllAsync(responseMessage);
             }
+
+            await SendMessageAsync(socketId, message);
+        }
+
+        // this method can be called from a client, add user.
+        public async Task AddPlayer(WebSocket socket, string teamName)
+        {
+            //var socketId = WebSocketConnectionManager.GetId(socket);
+            //GameEngine.AddPlayer(socketId, teamName);
+            //SendTeamIdToPlayers();
+            //if (GameEngine.GameStarted)
+            //{
+            //    Message responseMessage = new Message()
+            //    {
+            //        MessageType = MessageType.GameStarted,
+            //        Data = "Lets play a game"
+            //    };
+
+            //    await SendMessageToAllAsync(responseMessage);
+            //}
             //else
             //{
             //    SendTeamIdToPlayers();

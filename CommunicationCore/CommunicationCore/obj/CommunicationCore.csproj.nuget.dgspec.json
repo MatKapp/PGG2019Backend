@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\CommunicationCore\\CommunicationCore.csproj": {}
+    "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\CommunicationCore\\CommunicationCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\CommunicationCore\\CommunicationCore.csproj": {
+    "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\CommunicationCore\\CommunicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\CommunicationCore\\CommunicationCore.csproj",
+        "projectUniqueName": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\CommunicationCore\\CommunicationCore.csproj",
         "projectName": "CommunicationCore",
-        "projectPath": "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\CommunicationCore\\CommunicationCore.csproj",
-        "packagesPath": "C:\\Users\\mka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\CommunicationCore\\obj\\",
+        "projectPath": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\CommunicationCore\\CommunicationCore.csproj",
+        "packagesPath": "C:\\Users\\mpo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\CommunicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\mka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mpo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -30,8 +30,11 @@
         "frameworks": {
           "netcoreapp2.0": {
             "projectReferences": {
-              "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\WebSocketManager\\WebSocketManager.csproj": {
-                "projectPath": "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\WebSocketManager\\WebSocketManager.csproj"
+              "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\WebSocketManager\\WebSocketManager.csproj": {
+                "projectPath": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\WebSocketManager\\WebSocketManager.csproj"
+              },
+              "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\GameEngine\\GameEngine.csproj": {
+                "projectPath": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\GameEngine\\GameEngine.csproj"
               }
             }
           }
@@ -50,33 +53,40 @@
               "version": "[2.0.9, )"
             },
             "Microsoft.NETCore.App": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[2.0.0, )",
               "autoReferenced": true
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\WebSocketManager.Common\\WebSocketManager.Common.csproj": {
+    "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\WebSocketManager.Common\\WebSocketManager.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\WebSocketManager.Common\\WebSocketManager.Common.csproj",
+        "projectUniqueName": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\WebSocketManager.Common\\WebSocketManager.Common.csproj",
         "projectName": "WebSocketManager.Common",
-        "projectPath": "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\WebSocketManager.Common\\WebSocketManager.Common.csproj",
-        "packagesPath": "C:\\Users\\mka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\WebSocketManager.Common\\obj\\",
+        "projectPath": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\WebSocketManager.Common\\WebSocketManager.Common.csproj",
+        "packagesPath": "C:\\Users\\mpo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\WebSocketManager.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\mka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mpo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -112,27 +122,33 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\WebSocketManager\\WebSocketManager.csproj": {
+    "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\WebSocketManager\\WebSocketManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\WebSocketManager\\WebSocketManager.csproj",
+        "projectUniqueName": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\WebSocketManager\\WebSocketManager.csproj",
         "projectName": "WebSocketManager",
-        "projectPath": "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\WebSocketManager\\WebSocketManager.csproj",
-        "packagesPath": "C:\\Users\\mka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\WebSocketManager\\obj\\",
+        "projectPath": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\WebSocketManager\\WebSocketManager.csproj",
+        "packagesPath": "C:\\Users\\mpo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\WebSocketManager\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\mka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mpo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -145,8 +161,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\WebSocketManager.Common\\WebSocketManager.Common.csproj": {
-                "projectPath": "C:\\Users\\mka\\Desktop\\private\\PGG2019\\Server\\PGG2019Backend\\CommunicationCore\\WebSocketManager.Common\\WebSocketManager.Common.csproj"
+              "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\WebSocketManager.Common\\WebSocketManager.Common.csproj": {
+                "projectPath": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\CommunicationCore\\WebSocketManager.Common\\WebSocketManager.Common.csproj"
               }
             }
           }
@@ -176,10 +192,78 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\GameEngine\\GameEngine.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\GameEngine\\GameEngine.csproj",
+        "projectName": "GameEngine",
+        "projectPath": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\GameEngine\\GameEngine.csproj",
+        "packagesPath": "C:\\Users\\mpo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mpo\\Documents\\mage-jam\\PGG2019Backend\\GameEngine\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\mpo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.0": {
+          "dependencies": {
+            "InputSimulatorPlus": {
+              "target": "Package",
+              "version": "[1.0.7, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
