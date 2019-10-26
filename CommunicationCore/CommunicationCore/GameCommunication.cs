@@ -36,6 +36,7 @@ namespace CommunicationCore
 
             var message = new Message()
             {
+                MessageType = MessageType.Connected,
                 Data = $"Hello! Add a player BRO."
             };
 
@@ -48,13 +49,26 @@ namespace CommunicationCore
             var socketId = WebSocketConnectionManager.GetId(socket);
             string messageData = GameEngine.AddPlayer(socketId, teamName);
 
-            Message responseMessage = new Message()
+            if (GameEngine.GameStarted)
             {
-                MessageType = MessageType.,
-                Data = messageData
-            };
+                Message responseMessage = new Message()
+                {
+                    MessageType = MessageType.GameStarted,
+                    Data = "Lets play a game"
+                };
 
-            await SendMessageAsync(socketId, responseMessage);
+                await SendMessageToAllAsync(responseMessage);
+            }
+            else
+            {
+                Message responseMessage = new Message()
+                {
+                    MessageType = MessageType.GameStarted,
+                    Data = messageData
+                };
+
+                await SendMessageAsync(socketId, responseMessage);
+            }
         }
 
         public override async Task OnDisconnected(WebSocket socket)

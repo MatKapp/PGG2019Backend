@@ -8,6 +8,8 @@ namespace GameEngine
     {
         public readonly int PlayersNumber;
         public readonly int TeamsNumber;
+        public bool GameStarted { get; set; }
+        public int Players { get; set; }
         private string[] PlayerSocketIds { get; set; }
         private Dictionary<string, string> PlayerTeamRequest {get; set;}
 
@@ -33,6 +35,9 @@ namespace GameEngine
                         PlayerSocketIds[2 * i] = socketId;
                         PlayerSocketIds[2 * i + 1] = PlayerTeamRequest[teamName];
                         responseMessage = i.ToString();
+
+                        if (i == TeamsNumber)
+                            GameStarted = true;
                     }
                 }
             }
