@@ -12,7 +12,7 @@ namespace CommunicationCore
 {
     public class GameCommunication : WebSocketHandler
     {
-        const int PlayersNumber = 4;
+        const int PlayersNumber = 6;
         int PlayersCounter = 0;
         public GameEngine.GameEngine GameEngine { get; set; }
 
@@ -113,8 +113,8 @@ namespace CommunicationCore
 
         public override async Task OnDisconnected(WebSocket socket)
         {
-            var socketId = WebSocketConnectionManager.GetId(socket);
-            GameEngine.RemovePlayer(socketId);
+            //var socketId = WebSocketConnectionManager.GetId(socket);
+            //GameEngine.RemovePlayer(socketId);
 
             await base.OnDisconnected(socket);
         }
