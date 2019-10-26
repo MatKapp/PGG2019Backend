@@ -25,7 +25,8 @@ namespace GameEngine
         {
             string responseMessage = "";
 
-            if (PlayerTeamRequest.ContainsKey(teamName))
+            if (PlayerTeamRequest.ContainsKey(teamName) 
+                    && PlayerTeamRequest[teamName] != socketId)
             {
                 for (int i = 0; i < TeamsNumber; i++)
                 {
@@ -35,8 +36,9 @@ namespace GameEngine
                         PlayerSocketIds[2 * i] = socketId;
                         PlayerSocketIds[2 * i + 1] = PlayerTeamRequest[teamName];
                         responseMessage = i.ToString();
+                        PlayerTeamRequest.Remove(teamName);
 
-                        if (i == TeamsNumber)
+                        if (i == TeamsNumber -1)
                             GameStarted = true;
                     }
                 }
