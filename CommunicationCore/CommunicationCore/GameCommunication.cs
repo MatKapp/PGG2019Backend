@@ -12,7 +12,7 @@ namespace CommunicationCore
 {
     public class GameCommunication : WebSocketHandler
     {
-        const int PlayersNumber = 6;
+        const int PlayersNumber = 1;
         public GameEngine.GameEngine GameEngine { get; set; }
 
         public GameCommunication(WebSocketConnectionManager webSocketConnectionManager) : base(webSocketConnectionManager, new ControllerMethodInvocationStrategy())
@@ -47,16 +47,25 @@ namespace CommunicationCore
         public async Task Move(WebSocket socket, string direction)
         {
             var socketId = WebSocketConnectionManager.GetId(socket);
-            Enum.TryParse(typeof(MoveDirection), direction, true, out var moveDirection);
+            Message responseMessage;
 
-            GameEngine.Move(socketId, (MoveDirection) moveDirection);
-
-            var simulator = new InputSimulator();
-
-            Message responseMessage = new Message()
+            if (GameEngine.FindPlayerId(socketId) != -1)
             {
-                Data = "good"
-            };
+                Enum.TryParse(typeof(MoveDirection), direction, true, out var moveDirection);
+                GameEngine.Move(socketId, (MoveDirection)moveDirection);
+                var simulator = new InputSimulator();
+                responseMessage = new Message()
+                {
+                    Data = "OK"
+                };
+            }
+            else
+            {
+                responseMessage = new Message()
+                {
+                    Data = "You are not connected"
+                };
+            }
 
             await SendMessageAsync(socketId, responseMessage);
         }
