@@ -6,22 +6,28 @@ using System.Threading.Tasks;
 using WebSocketManager;
 using WebSocketManager.Common;
 using WindowsInput;
+using GameEngine;
 
 namespace CommunicationCore
 {
     public class GameCommunication : WebSocketHandler
     {
+        const int PlayersNumber = 6;
+        public GameEngine.GameEngine GameEngine { get; set; }
+
         public GameCommunication(WebSocketConnectionManager webSocketConnectionManager) : base(webSocketConnectionManager, new ControllerMethodInvocationStrategy())
         {
             ((ControllerMethodInvocationStrategy)MethodInvocationStrategy).Controller = this;
+            GameEngine = new GameEngine.GameEngine(PlayersNumber);
         }
 
         public override async Task OnConnected(WebSocket socket)
         {
             await base.OnConnected(socket);
             var socketId = WebSocketConnectionManager.GetId(socket);
+            GameEngine.AddPlayer(socketId);
 
-            var message = new Message() 
+            var message = new Message()
             {
                 Data = $"{socketId} you are connected Peter"
             };
@@ -29,27 +35,23 @@ namespace CommunicationCore
             await SendMessageAsync(socketId, message);
         }
 
+        public override async Task OnDisconnected(WebSocket socket)
+        {
+            var socketId = WebSocketConnectionManager.GetId(socket);
+            GameEngine.RemovePlayer(socketId);
+
+            await base.OnDisconnected(socket);
+        }
+
         // this method can be called from a client, add user.
         public async Task Move(WebSocket socket, string direction)
         {
             var socketId = WebSocketConnectionManager.GetId(socket);
-            var simulator = new InputSimulator();
+            Enum.TryParse(typeof(MoveDirection), direction, true, out var moveDirection);
 
-            if (direction == "left")
-            {
-                simulator.Keyboard.KeyUp(WindowsInput.Native.VirtualKeyCode.RIGHT);
-                simulator.Keyboard.KeyDown(WindowsInput.Native.VirtualKeyCode.LEFT);
-            }
-            else if (direction == "right")
-            {
-                simulator.Keyboard.KeyUp(WindowsInput.Native.VirtualKeyCode.LEFT);
-                simulator.Keyboard.KeyDown(WindowsInput.Native.VirtualKeyCode.RIGHT);
-            }
-            else
-            {
-                simulator.Keyboard.KeyUp(WindowsInput.Native.VirtualKeyCode.LEFT);
-                simulator.Keyboard.KeyUp(WindowsInput.Native.VirtualKeyCode.RIGHT);
-            }
+            GameEngine.Move(socketId, (MoveDirection) moveDirection);
+
+            var simulator = new InputSimulator();
 
             Message responseMessage = new Message()
             {
