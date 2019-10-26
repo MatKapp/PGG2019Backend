@@ -12,7 +12,7 @@ namespace CommunicationCore
 {
     public class GameCommunication : WebSocketHandler
     {
-        const int PlayersNumber = 16;
+        const int PlayersNumber = 2;
         int PlayersCounter = 0;
         public GameEngine.GameEngine GameEngine { get; set; }
 
@@ -43,26 +43,36 @@ namespace CommunicationCore
 
             string name = GameEngine.AddPlayer(socketId);
 
+            Message message;
+
             if (String.IsNullOrEmpty(name))
             {
-                return;
-            }
-
-            var message = new Message()
-            {
-                MessageType = MessageType.Name,
-                Data = name
-            };
-            if (GameEngine.GameStarted)
-            {
-                Message responseMessage = new Message()
+                message = new Message()
                 {
-                    MessageType = MessageType.GameStarted,
-                    Data = "Lets play a game"
+                    MessageType = MessageType.NoRoom,
+                    Data = "Room is full"
                 };
+                return;
+            } else
+            {
+                PlayersCounter++;
 
-                await SendMessageToAllAsync(responseMessage);
-            }
+                message = new Message()
+                {
+                    MessageType = MessageType.Name,
+                    Data = $"{name} {PlayersCounter}",
+                };
+                if (GameEngine.GameStarted)
+                {
+                    Message responseMessage = new Message()
+                    {
+                        MessageType = MessageType.GameStarted,
+                        Data = "Lets play a game"
+                    };
+
+                    await SendMessageToAllAsync(responseMessage);
+                }
+            }          
 
             await SendMessageAsync(socketId, message);
         }

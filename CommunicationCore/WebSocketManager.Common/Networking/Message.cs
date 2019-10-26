@@ -6,6 +6,7 @@
         Joined,
         GameStarted,
         Name,
+        NoRoom
     }
 
     public class Message
