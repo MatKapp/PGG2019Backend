@@ -9,8 +9,7 @@ namespace GameEngine
         public readonly int PlayersNumber;
         public readonly int TeamsNumber;
         public bool GameStarted { get; set; }
-        public int Players { get; set; }
-        private string[] PlayerSocketIds { get; set; }
+        public string[] PlayerSocketIds { get; set; }
         private Dictionary<string, string> PlayerTeamRequest {get; set;}
 
         public GameEngine(int playersNumber)
@@ -21,9 +20,8 @@ namespace GameEngine
             PlayerTeamRequest = new Dictionary<string, string>();
         }
 
-        public string AddPlayer(string socketId, string teamName)
+        public void AddPlayer(string socketId, string teamName)
         {
-            string responseMessage = "";
 
             if (PlayerTeamRequest.ContainsKey(teamName) 
                     && PlayerTeamRequest[teamName] != socketId)
@@ -35,7 +33,6 @@ namespace GameEngine
                     {
                         PlayerSocketIds[2 * i] = socketId;
                         PlayerSocketIds[2 * i + 1] = PlayerTeamRequest[teamName];
-                        responseMessage = i.ToString();
                         PlayerTeamRequest.Remove(teamName);
 
                         if (i == TeamsNumber -1)
@@ -46,10 +43,7 @@ namespace GameEngine
             else
             {
                 PlayerTeamRequest.Add(teamName, socketId);
-                responseMessage = "-1";
             }
-
-            return responseMessage;
         }
 
         public int FindPlayerId(string socketId)

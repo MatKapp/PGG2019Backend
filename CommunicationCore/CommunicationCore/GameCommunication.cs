@@ -47,7 +47,7 @@ namespace CommunicationCore
         public async Task AddPlayer(WebSocket socket, string teamName)
         {
             var socketId = WebSocketConnectionManager.GetId(socket);
-            string messageData = GameEngine.AddPlayer(socketId, teamName);
+            GameEngine.AddPlayer(socketId, teamName);
 
             if (GameEngine.GameStarted)
             {
@@ -61,15 +61,31 @@ namespace CommunicationCore
             }
             else
             {
-                Message responseMessage = new Message()
-                {
-                    MessageType = MessageType.Joined,
-                    Data = messageData
-                };
-
-                await SendMessageAsync(socketId, responseMessage);
+                SendTeamIdToPlayers();
             }
         }
+
+        private async void SendTeamIdToPlayers()
+        {
+            for (int i = 0; i < GameEngine.PlayerSocketIds.Length; i++)
+            {
+                if (!String.IsNullOrEmpty(GameEngine.PlayerSocketIds[i]))
+                {
+                    int teamId = i / 2;
+
+                    Message teamIdMessage = new Message()
+                    {
+                        MessageType = MessageType.Joined,
+                        Data = i.ToString()
+                    };
+
+                await SendMessageAsync(GameEngine.PlayerSocketIds[i], teamIdMessage);
+
+                }
+            }
+        }
+            
+        
 
         public override async Task OnDisconnected(WebSocket socket)
         {
