@@ -86,8 +86,8 @@ namespace GameEngine
                 },
                 {10, new Dictionary<MoveDirection, WindowsInput.Native.VirtualKeyCode>
                     {
-                        { MoveDirection.Left, WindowsInput.Native.VirtualKeyCode.VK_B },
-                        { MoveDirection.Attack, WindowsInput.Native.VirtualKeyCode.VK_N },
+                        { MoveDirection.Left, WindowsInput.Native.VirtualKeyCode.BACK },
+                        { MoveDirection.Attack, WindowsInput.Native.VirtualKeyCode.RIGHT },
                         { MoveDirection.Right, WindowsInput.Native.VirtualKeyCode.VK_M },
                     }
                 },
