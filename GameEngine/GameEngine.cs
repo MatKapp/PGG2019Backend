@@ -69,7 +69,7 @@ namespace GameEngine
 
         public int FindPlayerId(string socketId)
         {
-            for (int i = 0; i <= PlayerSocketIds.Length; i++)
+            for (int i = 0; i < PlayerSocketIds.Length; i++)
             {
                 if (PlayerSocketIds[i] == socketId)
                 {
