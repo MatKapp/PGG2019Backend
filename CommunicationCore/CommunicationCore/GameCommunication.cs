@@ -12,7 +12,7 @@ namespace CommunicationCore
 {
     public class GameCommunication : WebSocketHandler
     {
-        const int PlayersNumber = 6;
+        const int PlayersNumber = 16;
         int PlayersCounter = 0;
         public GameEngine.GameEngine GameEngine { get; set; }
 
@@ -50,7 +50,7 @@ namespace CommunicationCore
 
             var message = new Message()
             {
-                MessageType = MessageType.Connected,
+                MessageType = MessageType.Name,
                 Data = name
             };
             if (GameEngine.GameStarted)

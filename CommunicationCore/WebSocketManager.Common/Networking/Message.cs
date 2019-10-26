@@ -4,7 +4,8 @@
     {        
         Connected,
         Joined,
-        GameStarted
+        GameStarted,
+        Name,
     }
 
     public class Message
