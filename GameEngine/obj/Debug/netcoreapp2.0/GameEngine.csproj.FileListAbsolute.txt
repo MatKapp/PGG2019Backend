@@ -1,0 +1,9 @@
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\GameEngine\bin\Debug\netcoreapp2.0\GameEngine.deps.json
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\GameEngine\bin\Debug\netcoreapp2.0\GameEngine.dll
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\GameEngine\bin\Debug\netcoreapp2.0\GameEngine.pdb
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\GameEngine\obj\Debug\netcoreapp2.0\GameEngine.csproj.CoreCompileInputs.cache
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\GameEngine\obj\Debug\netcoreapp2.0\GameEngine.AssemblyInfoInputs.cache
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\GameEngine\obj\Debug\netcoreapp2.0\GameEngine.AssemblyInfo.cs
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\GameEngine\obj\Debug\netcoreapp2.0\GameEngine.dll
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\GameEngine\obj\Debug\netcoreapp2.0\GameEngine.pdb
+C:\Users\mka\Desktop\private\PGG2019\Server\PGG2019Backend\GameEngine\obj\Debug\netcoreapp2.0\GameEngine.csprojAssemblyReference.cache

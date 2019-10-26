@@ -12,27 +12,49 @@ namespace CommunicationCore
 {
     public class GameCommunication : WebSocketHandler
     {
-        const int PlayersNumber = 1;
+        const int PlayersNumber = 6;
         public GameEngine.GameEngine GameEngine { get; set; }
 
         public GameCommunication(WebSocketConnectionManager webSocketConnectionManager) : base(webSocketConnectionManager, new ControllerMethodInvocationStrategy())
         {
+            ValidatePlayersNumber();
+
             ((ControllerMethodInvocationStrategy)MethodInvocationStrategy).Controller = this;
             GameEngine = new GameEngine.GameEngine(PlayersNumber);
+        }
+
+        private void ValidatePlayersNumber()
+        {
+            if (PlayersNumber % 2 == 1)
+                throw new Exception("Please change number of players to a even number");
         }
 
         public override async Task OnConnected(WebSocket socket)
         {
             await base.OnConnected(socket);
             var socketId = WebSocketConnectionManager.GetId(socket);
-            GameEngine.AddPlayer(socketId);
 
             var message = new Message()
             {
-                Data = $"{socketId} you are connected Peter"
+                Data = $"Hello! Add a player BRO."
             };
 
             await SendMessageAsync(socketId, message);
+        }
+
+        // this method can be called from a client, add user.
+        public async Task AddPlayer(WebSocket socket, string teamName)
+        {
+            var socketId = WebSocketConnectionManager.GetId(socket);
+            string messageData = GameEngine.AddPlayer(socketId, teamName);
+
+            Message responseMessage = new Message()
+            {
+                MessageType = MessageType.,
+                Data = messageData
+            };
+
+            await SendMessageAsync(socketId, responseMessage);
         }
 
         public override async Task OnDisconnected(WebSocket socket)
