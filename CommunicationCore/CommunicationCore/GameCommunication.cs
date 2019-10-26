@@ -12,7 +12,7 @@ namespace CommunicationCore
 {
     public class GameCommunication : WebSocketHandler
     {
-        const int PlayersNumber = 2;
+        const int PlayersNumber = 16;
         int PlayersCounter = 0;
         public GameEngine.GameEngine GameEngine { get; set; }
 
@@ -32,12 +32,7 @@ namespace CommunicationCore
 
         public override async Task OnConnected(WebSocket socket)
         {
-            if (PlayersCounter >= PlayersNumber)
-            {
-                return;
-            }
-
-
+            
             await base.OnConnected(socket);
             var socketId = WebSocketConnectionManager.GetId(socket);
 
@@ -52,7 +47,6 @@ namespace CommunicationCore
                     MessageType = MessageType.NoRoom,
                     Data = "Room is full"
                 };
-                return;
             } else
             {
                 PlayersCounter++;
